@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpRequest
 from django.http import HttpResponse
 
-def home(request):
+def homie(request):
 		assert isinstance(request, HttpRequest)
 		return render(
 			request,
@@ -13,3 +13,6 @@ def home(request):
 				'title': 'accueil',
 			})
 		)
+
+def home(request):
+	return render(request, 'app/basis.html')
