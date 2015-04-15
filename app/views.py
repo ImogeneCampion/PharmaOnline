@@ -7,7 +7,7 @@ def homie(request):
 		assert isinstance(request, HttpRequest)
 		return render(
 			request,
-			'helloworld/templates/app/index.html',
+			'app/basis.html',
 			context_instance = RequestContext(request,
 			{
 				'title': 'accueil',
