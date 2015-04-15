@@ -103,7 +103,7 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-print os.path.join(BASE_DIR, 'templates')
+print(os.path.join(BASE_DIR, 'templates'))
 TEMPLATE_DIRS = (
 	os.path.join(BASE_DIR, 'templates'),
 )
