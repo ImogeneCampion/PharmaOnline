@@ -4,7 +4,7 @@ from django.db import models
 class Rx(models.Model):
 	nom = models.CharField(max_length = 50)
 	zone = models.CharField(max_length = 80)
-	addresse = models.CharField(max_length = 80)
+	adresse = models.CharField(max_length = 80)
 	telephone = models.TextField(null=True)
 	
 	def __str__(self):
