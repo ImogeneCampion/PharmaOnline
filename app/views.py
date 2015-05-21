@@ -6,7 +6,7 @@ from django.http import Http404
 from app.models import Rx
 
 def home(request):
-	return render(request, 'app/basis.html')
+	return render(request, 'app/squelette.html')
 	
 def search(request):
-	return render(request, 'app/squelette.html')
+	return render(request, 'app/basis.html')
