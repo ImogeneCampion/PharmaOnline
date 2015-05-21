@@ -1,24 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-
+{% block head %}
+	{% load staticfiles %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PharmaOnline</title>
+    <title>{% block title %}PharmaOnline{% endblock %}</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.min.css' %}" />
 
     <!-- Custom CSS -->
-    <link href="css/freelancer.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/freelancer.css' %}" />
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/font-awesome/css/font-awesome.min.css' %}" />
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -28,7 +30,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+{% endblock %}
 </head>
 
 <body id="page-top" class="index">
@@ -54,10 +56,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#Find your Pharmacy">Find your pharmacy</a>
+                        <a href="#Find your Pharmacy">Find your Medecine</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">About</a>
+                        <a href="#about">About us</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
@@ -74,11 +76,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name">Quick Pharmacy</span>
+                        <span class="name">PharmaOnline</span>
                         <hr class="star-light">
-                        <span class="skills">Your pharmacy near you</span>
+                        <span class="skills"></span>
                     </div>
                 </div>
             </div>
@@ -89,10 +90,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Find your Pharmacy</h2>
+                    <h2>Find your Medecine</h2>
                     <hr class="star-primary">
                 </div>
-					<p> enter your location
+					<p> Enter medecine name
 						<form class="navbar-form navbar-left" role="search">
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Search">
@@ -188,7 +189,7 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>Saint-Louis de Gonzague , Delmas 31-33</p>
+                        <p>Institution Saint-Louis de Gonzague , Delmas 31-33</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -205,14 +206,11 @@
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                             </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                            </li>
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>About QP</h3>
-                        <p>We are here for you !</p>
+                        <p>Questions or comments?</p>
                     </div>
                 </div>
             </div>
@@ -221,7 +219,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2015
+                        Copyright &copy; PharmaOnline 2015
                     </div>
                 </div>
             </div>

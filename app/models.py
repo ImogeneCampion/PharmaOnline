@@ -11,7 +11,10 @@ class Rx(models.Model):
 		return self.nom
 
 class Drug(models.Model):
-	pass
+	nom = models.CharField(max_length = 50)
+	famille_molecule = models.CharField(max_length = 50)
+	posologie = models.TextField(null = True)
+	nom_populaire = models.TextField(null=True)
 	
-class Area(models.Model):
-	pass
+	def __str__(self):
+		return self.nom
