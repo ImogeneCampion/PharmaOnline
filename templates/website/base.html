@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+
+	{% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PharmaOnline web page">
+    <meta name="author" content="Henri E. Francois">
+
+    <title>{% block title %}PharmaOnline{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/freelancer.css' %}" />
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}" />
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body id="page-top" class="index">
+    <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href={% url 'haystack_search' %}>PharmaOnline</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+									{% if  request.user.is_authenticated %}
+                    <li class="hidden active">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{% url 'pharmacies' %}">Les Pharmacies</a>
+                    </li>
+										<li class="page-scroll">
+                        <a href="{% url 'auth_logout' %}">Deconnection</a>
+                    </li>
+										{% else %}
+										<li class="page-scroll">
+                        <a href="{% url 'pharmacies' %}">Les Pharmacies</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{% url 'registration_register' %}"> Creer un compte.</a>
+                    </li>
+					<li class="page-scroll">
+                        <a href="{% url 'auth_login' %}">S'identifier</a>
+                    </li>
+										{% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+   </nav>
+
+    <header>
+			{% block header %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">PharmaOnline</span>
+                        <hr class="star-light">
+                        <span class="skills"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+			{% endblock %}
+    </header>	<!-- Portfolio Grid Section -->
+
+{% block content %}
+    <section id="FindP">
+			{% block search %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Recherchez vos Medicaments</h2>
+                    <hr class="star-primary">
+                </div>
+					<p> Entrez votre requette.
+						<form class="navbar-form navbar-left" method="get" action=".">
+						{% block form %}
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Medicament/Pharmacie" name="q">
+							</div>
+						<button type="submit" class="btn btn-default" value="Search">Search<span class="glyphicon glyphicon-map-market"></span></button>
+            {% endblock %}
+						</form>
+					</p>
+		</div>	</div>
+    		{% endblock %}
+	</section>
+
+
+    <!-- About Section -->
+    <section class="success" id="about">
+	{% block about %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>A propos de PharmaOnline</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p><b>En Haiti, il est bien trop souvent difficile de retrouver un simple medicament;</b> Les malades doivent souvent chercher partout avant de retrouver (s'ils ont de la chance), le medicament prescrit ou le produit necessaire.</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>  PharmaOnline a ete cree dans le but de faciliter l'acces aux medicaments, et dans une optique plus large, d'ameliorer les rapports entre les pharmacies, et autres provisionneurs de soins de sante, et le patient. </p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                </div>
+            </div>
+        </div>
+	{% endblock %}
+    </section>
+
+	<!-- Contact Section -->
+<!--    <section id="contact">
+	{% block contact %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contactez-nous</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Nom</label>
+                                <input type="text" class="form-control" placeholder="Nom Complet" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="Adresse Email" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Telephone</label>
+                                <input type="tel" class="form-control" placeholder="Numero de telephone" id="phone" required data-validation-required-message="">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Sujet</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Veuillez entrer le sujet de votre message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+						<div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Veuillez rediger un message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+	{% endblock %}
+	</section>
+-->
+
+{% endblock %}
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Retrouvez-nous</h3>
+                        <p>Institution Saint-Louis de Gonzague , Delmas 31-33</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Autour du Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://www.facebook.com/pharmaon" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="htpps://www.twitter.com" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>A propos de P.O.</h3>
+                        <p>Commentaires? Envoyez-nous un mail: exemple@gmail.com </p>
+                        <p>Ou essayez par notre <a href="#">Page de Contact</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; PharmaOnline 2015
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'js/freelancer.js' %}"></script>
+
+</html>
+</body>

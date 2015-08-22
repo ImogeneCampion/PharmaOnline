@@ -1,0 +1,3 @@
+{{object.nom_generique}}
+{{object.nom_commercial}}
+{{object.compagnie}}

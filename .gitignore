@@ -1,3 +1,9 @@
 venv
+<<<<<<< HEAD
 *.pyc
+=======
+
+*.pyc
+
+>>>>>>> origin/master
 staticfiles
