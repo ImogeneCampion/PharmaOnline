@@ -18,14 +18,11 @@
 											<a href="{{ result.object.get_absolute_url }}">{{ result.object.adresse }}</a>
 											<a href="{{ result.object.get_absolute_url }}">{{ result.object.zone }}</a>
                 	</p>
-							{% if result.object.nom_generique %}
-                	<p>
-                    Nom generique:<a href="{{ result.object.get_absolute_url }}"> {{ result.object.nom_generique }}</a>
-                    Nom commercial:<a href="{{ result.object.get_absolute_url }}"> {{ result.object.nom_commercial }}</a>
-                    Description: <a href="{{ result.object.get_absolute_url }}">{{ result.object.quantite }}</a>
-                    Compagnie:<a href="{{ result.object.get_absolute_url }}"><i> {{ result.object.compagnie }}</i></a>
-                	</p>
-							{% endif %}
+                	<div>
+                    <a href="{{ result.object.get_absolute_url }}"> {{ result.object.nom_commercial }}</a>
+                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.quantite }}</a>
+                    <a href="{{ result.object.get_absolute_url }}"><i> {{ result.object.compagnie }}</i></a>
+                	</div>
             {% empty %}
 								<h1> Aucun resultat retrouve. </h1>
 								<p> Vous pouvez vous referer a la <a href="#">documentation</a> pour optimiser votre recherche.</p>

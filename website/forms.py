@@ -1,4 +1,5 @@
 from django import forms
+from .models import Medicament
 
 
 class ContactForm(forms.Form):
@@ -9,4 +10,7 @@ class ContactForm(forms.Form):
 		required = True,
 		widget = forms.Textarea
 	)
-	
+
+
+class MedicamentForm(forms.ModelForm):
+	pass

@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
-from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Pharmacie
+from .forms import ContactForm
 
 # Create your views here.
 def home(request):
@@ -25,3 +25,18 @@ def pharmacies(request):
 		pharmacies = paginator.page(paginator.num_pages)
 
 	return render_to_response('website/pharmacies.html', {'pharmacies': pharma})
+
+def contact(request):
+	form = ContactForm(request.POST or None)
+	if form.is_valid():
+		for key, value in form.cleaned_data.items():
+			print (key, value)
+			#print form.cleaned_data.get(key)
+		full_name = form.cleaned_data.get("Nom")
+		email = form.cleaned_data.get("Adresse_email: ")
+		message = form.cleaned_data.get("Contenu: ")
+
+	context = {
+		"form": form,
+	}
+	return render(request, "website/contact.html", context)

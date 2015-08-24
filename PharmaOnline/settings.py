@@ -47,6 +47,7 @@ INSTALLED_APPS = (
 	'whoosh',
     #my apps
 	'website',
+    'pharmablog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -83,8 +84,8 @@ WSGI_APPLICATION = 'PharmaOnline.wsgi.application'
 #email settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ayicult@gmail.com'
-EMAIL_PASSWORD = 'promocultht14'
+EMAIL_HOST_USER = '###########'
+EMAIL_PASSWORD = '############'
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
