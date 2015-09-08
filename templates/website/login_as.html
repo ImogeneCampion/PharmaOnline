@@ -1,0 +1,20 @@
+{% extends 'website/base.html' %}
+
+{% block title %} Login As | {{ block.super }} {% endblock %}
+
+{% block content %}
+<div>
+<h1> Qui etes-vous ? </h1>
+</div>
+<div class="col-md-6">
+  <p> PharmaOnline vous propose un compte fait sur mesure </p>
+</div>
+<jumbotron>
+
+  <a id="alt-button-color" href="#" class="btn btn-primary btn-block" role="button"> Une Pharmacie </a>
+
+  <a id="alt-button-color" href="#" class="btn btn-primary btn-block" role="button"> Un Medecin </a>
+
+  <a id="alt-button-color" href="#" class="btn btn-primary btn-block" role="button"> Independant </a>
+</jumbotron>
+{% endblock %}

@@ -3,4 +3,4 @@ from django.shortcuts import render
 # Create your views here.
 def bloghome(request):
     context = {}
-    return render(request, '')
+    return render(request, 'pharmablog/basis.html', context)

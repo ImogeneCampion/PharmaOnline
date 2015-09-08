@@ -82,13 +82,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'PharmaOnline.wsgi.application'
 
 #email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = '###########'
-EMAIL_PASSWORD = '############'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
 
 ADMINS = (
     ('Henri', 'doublerico7@gmail.com'),

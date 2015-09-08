@@ -1,8 +1,9 @@
 from django.shortcuts import render, render_to_response
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Pharmacie
-from .forms import ContactForm
+from .models import Pharmacie, ContactModel
+from .forms import ContactForm, ContactModelForm
 
 # Create your views here.
 def home(request):
@@ -13,7 +14,7 @@ def home(request):
 		}
 	return render(request, 'website/base.html', context)
 
-def pharmacies(request):
+def pharmacies_list(request):
 	pharma = Pharmacie.objects.all()
 	paginator = Paginator(pharma, 5)
 	page = request.GET.get('page')
@@ -26,17 +27,31 @@ def pharmacies(request):
 
 	return render_to_response('website/pharmacies.html', {'pharmacies': pharma})
 
+@login_required
 def contact(request):
-	form = ContactForm(request.POST or None)
+	title = "Contactez-nous maintenant!"
+	form  = ContactModelForm(request.POST or None)
+	context= {
+            "title": title,
+            "form": form
+    }
 	if form.is_valid():
-		for key, value in form.cleaned_data.items():
-			print (key, value)
-			#print form.cleaned_data.get(key)
-		full_name = form.cleaned_data.get("Nom")
-		email = form.cleaned_data.get("Adresse_email: ")
-		message = form.cleaned_data.get("Contenu: ")
+		instance = form.save(commit = False)
+		name = form.cleaned_data.get("Last_name")
+		if not name:
+			name = "Nouveau nom de Famille"
+			instance.name = name
+			instance.save()
+			context = {
+				"title": "Merci"
+			}
+		if request.user.is_authenticated and request.user.is_staff:
+			queryset = ContactModel.objects.all().order_by('-timestamp')
+			context = {
+				"queryset": queryset
+			}
 
-	context = {
-		"form": form,
-	}
 	return render(request, "website/contact.html", context)
+
+def registration_bridge(request):
+	return render(request, 'website/login_as.html')
