@@ -3,7 +3,7 @@
 **PharmaOnline** is a project whose main goal is to facilitate access to health related products, especially pharmaceuticals, in Haiti.
 Often, it is difficult for people to find their prescribed drugs (*and sometimes even over-the-counter drugs*) around Haiti's cities due to various reasons.
 
-- Scarcity of the drugs itself
+- Scarcity of the drugs themselves
 
 - An unorganized system
 
@@ -15,4 +15,3 @@ Because of this, we found that a system that tells where and when (eventually) t
 This project was built with the [Heroku Django Starter template](https://github.com/heroku/heroku-django-template)
 
 Temporary link to project (will be moved): https://webrx.herokuapp.com
-
