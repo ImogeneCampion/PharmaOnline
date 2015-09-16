@@ -1,6 +1,7 @@
 from django import forms
-from .models import ContactModel
+from .models import ContactModel, PharmacyProfile
 from registration.forms import RegistrationForm
+from haystack.forms import ModelSearchForm
 
 class ContactForm(forms.Form):
 	nom = forms.CharField(required = True)
@@ -21,8 +22,6 @@ class ContactModelForm(forms.ModelForm):
         email_base, provider = email.split("@")
         domain, extension = provider.split('.')
 
-        if extension == "edu":
-            raise forms.ValidationError("Veuillez rentrer un email acceptable.")
         return email
 
     def clean_name(self):
@@ -32,7 +31,17 @@ class ContactModelForm(forms.ModelForm):
         return first_name, Last_name
 
 
-#class PharmacyProfileRegistrationForm(RegistrationForm):
-#	class Meta:
-#		model  = PharmacyProfile
-#		fields = ("nom", "adresse", "telephone")
+class PharmacyProfileRegistrationForm(RegistrationForm):
+	class Meta:
+		model  = PharmacyProfile
+		fields = ("nom", "adresse", "telephone")
+
+class LoggedInSearchForm(ModelSearchForm):
+
+	def search(self):
+		sqs = super(LoggedInSearchForm, self).search()
+
+		if not self.is_valid():
+			return self.no_query_found()
+
+		return sqs

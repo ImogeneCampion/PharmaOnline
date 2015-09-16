@@ -15,6 +15,7 @@ class PharmacieAdmin(admin.ModelAdmin):
 class ContactModelAdmin(admin.ModelAdmin):
     list_display = ('Last_name', 'email', 'msg_subject', 'timestamp')
     list_filter = ('timestamp', 'Last_name', 'msg_subject', 'email')
+ 
 # Register your models here.
 admin.site.register(Medicament, MedicamentAdmin)
 admin.site.register(Pharmacie, PharmacieAdmin)

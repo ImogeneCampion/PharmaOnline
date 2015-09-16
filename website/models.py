@@ -47,8 +47,10 @@ class ContactModel(models.Model):
     def __str__(self):
         return self.email
 
-#class PharmacyProfile(models.Model):
-#	user      = models.OneToOneField(User, unique=True)
-#	nom       = models.CharField(max_length = 45)
-#	adresse   = models.CharField(max_length = 70)
-#	telephone = models.PositiveIntegerField()
+class PharmacyProfile(models.Model):
+	user      = models.OneToOneField(User, unique=True)
+	nom       = models.CharField(max_length = 45)
+	adresse   = models.CharField(max_length = 70)
+	telephone = models.PositiveIntegerField()
+	def __str__(self):
+		return self.nom

@@ -2,8 +2,10 @@ from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from haystack.generic_views import SearchView
+from haystack.query import SearchQuerySet
 from .models import Pharmacie, ContactModel
-from .forms import ContactForm, ContactModelForm
+from .forms import ContactForm, ContactModelForm, LoggedInSearchForm
 
 # Create your views here.
 def home(request):
@@ -55,3 +57,15 @@ def contact(request):
 
 def registration_bridge(request):
 	return render(request, 'website/login_as.html')
+
+class LoggedInSearchView(SearchView):
+	template_name = '/pharmacies'
+	queryset = SearchQuerySet()
+	form_class = LoggedInSearchForm
+
+def pharmacy_registration(request):
+	form = PharmacyProfileRegistrationForm(request.POST or None)
+	context = {
+		"form": form
+	}
+	render(request, 'website/pharmacy_registration.html', context)
