@@ -15,3 +15,5 @@ Because of this, we found that a system that tells where and when (eventually) t
 This project was built with the [Heroku Django Starter template](https://github.com/heroku/heroku-django-template)
 
 Temporary link to project (will be moved): https://webrx.herokuapp.com
+
+There are many companies that provides pharmaceutical services online to the people. There is a huge benefit of online pharmacies, people can buy and get medical treatments and products at home by ordering on the site of the company. UK Meds ( https://www.ukmeds.co.uk ) is also an online pharmaceutical company that provides medical services online on the internet.
